@@ -19,6 +19,7 @@ docker run \
 # The configuration file is docker/configs/Redis/redis.conf
 docker run \
     --name redis \
+    --restart=always \
     -p 16379:16379 \
     -v /home/redis/data:/data:Z \
     -v /home/redis/conf/redis.conf:/etc/redis/redis.conf:Z \
@@ -33,3 +34,17 @@ docker run \
     -e "MINIO_ROOT_USER=USER" \
     -e "MINIO_ROOT_PASSWORD=PASSWORD" \
     -d minio/minio server /data --console-address ":9001"
+
+docker run \
+    --name minio \
+    --restart=always \
+    -p 9000:9000 \
+    -p 9001:9001 \
+    -v /data1:/data1:Z \
+    -v /data2:/data2:Z \
+    -v /data3:/data3:Z \
+    -v /data4:/data4:Z \
+    -e "MINIO_ROOT_USER=USER" \
+    -e "MINIO_ROOT_PASSWORD=PASSWORD" \
+    -d minio/minio server http://172.17.0.{101...102}/data{1...4} \
+        --console-address ":9001"
