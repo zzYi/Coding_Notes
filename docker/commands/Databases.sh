@@ -15,6 +15,15 @@ docker run \
     -p 27017:27017 \
     -v /root/mongodb:/data/db:Z -d mongo
 
+# PostGIS
+docker run \
+    --name postgis \
+    -p 5432:5432 \
+    -e POSTGRES_PASSWORD=PASSWORD \
+    -e PGDATA=/var/lib/postgresql/data/pgdata \
+    -v /home/postgis/data:/var/lib/postgresql/data:Z \
+    -d postgis/postgis
+
 # Redis
 # The configuration file is docker/configs/Redis/redis.conf
 docker run \
