@@ -9,12 +9,12 @@ public class PostGis {
 		// 创建postgis数据库连接
 		Map<String, Object> params = new HashMap<>();
 		params.put("dbtype", "postgis");
-		params.put("host", "172.17.2.231");
+		params.put("host", "127.0.0.1");
 		params.put("port", 5432);
 		params.put("schema", "public");
 		params.put("database", "postgres");
 		params.put("user", "postgres");
-		params.put("passwd", "Zjic2018");
+		params.put("passwd", "PASSWORD");
 		DataStore dataStore = DataStoreFinder.getDataStore(params);
 
 		// 获取数据库表结构
